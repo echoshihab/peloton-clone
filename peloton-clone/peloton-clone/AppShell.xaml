@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:PelotonCloneApp.Views"
+       xmlns:helpers="clr-namespace:PelotonCloneApp.Helpers"
        Title="peloton_clone"
        x:Class="peloton_clone.AppShell">
 
@@ -26,15 +27,64 @@
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FontImageSource">
+                
+            </Style>
         </ResourceDictionary>
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Featured" Icon="icon_about.png" Route="FeaturedPage" ContentTemplate="{DataTemplate local:FeaturedPage}" />
-        <ShellContent Title="Challenges" Icon="icon_about.png" Route="ChallengesPage" ContentTemplate="{DataTemplate local:ChallengesPage}" />
-        <ShellContent Title="Classes" Icon="icon_about.png" Route="ClassesPage" ContentTemplate="{DataTemplate local:ClassesPage}" />
-        <ShellContent Title="Profile" Icon="icon_about.png" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
-        <ShellContent Title="More" Icon="icon_about.png" Route="MorePage" ContentTemplate="{DataTemplate local:MorePage}" />
+        <Tab Title="Featured" 
+             Route="FeaturedPage"
+             Shell.NavBarIsVisible="False">
+            <Tab.Icon >
+                <FontImageSource FontFamily="FASolid"
+                                             Glyph="{x:Static helpers:FAIcons.Star}"/>
+            </Tab.Icon>
+            <ShellContent 
+                          ContentTemplate="{DataTemplate local:FeaturedPage}"/>
+        </Tab>
+        <Tab Title="Challenges" 
+             Route="ChallengesPage"
+             Shell.NavBarIsVisible="False">
+            <Tab.Icon >
+                <FontImageSource FontFamily="FASolid"
+                                             Glyph="{x:Static helpers:FAIcons.Trophy}"/>
+            </Tab.Icon>
+            <ShellContent 
+                          ContentTemplate="{DataTemplate local:ChallengesPage}"/>
+        </Tab>
+        <Tab Title="Classes" 
+             Route="ClassesPage"
+             Shell.NavBarIsVisible="False">
+            <Tab.Icon >
+                <FontImageSource FontFamily="FASolid"
+                                             Glyph="{x:Static helpers:FAIcons.PlayCircle}"/>
+            </Tab.Icon>
+            <ShellContent 
+                          ContentTemplate="{DataTemplate local:ClassesPage}"/>
+        </Tab>
+        <Tab Title="Profile" 
+             Route="ProfilePage"
+             Shell.NavBarIsVisible="False">
+            <Tab.Icon >
+                <FontImageSource FontFamily="FASolid"
+                                             Glyph="{x:Static helpers:FAIcons.User}"/>
+            </Tab.Icon>
+            <ShellContent 
+                          ContentTemplate="{DataTemplate local:ProfilePage}"/>
+        </Tab>
+        <Tab Title="More" 
+             Route="MorePage"
+             Shell.NavBarIsVisible="False">
+            <Tab.Icon >
+                <FontImageSource FontFamily="FASolid"
+                                             Glyph="{x:Static helpers:FAIcons.GripLines}"/>
+            </Tab.Icon>
+            <ShellContent 
+                          ContentTemplate="{DataTemplate local:MorePage}"/>
+        </Tab>
+
     </TabBar>
 
     <!--

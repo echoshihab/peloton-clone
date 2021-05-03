@@ -8,6 +8,18 @@
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Fonts\FABrands.otf" />
+    <None Remove="Resources\Fonts\FARegular.otf" />
+    <None Remove="Resources\Fonts\FASolid.otf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\FABrands.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FARegular.otf" />
+    <EmbeddedResource Include="Resources\Fonts\FASolid.otf" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonkeyCache.FileStore" Version="1.5.2" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
@@ -21,7 +33,6 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Resources\Fonts\" />
     <Folder Include="Resources\Images\" />
     <Folder Include="Services\" />
   </ItemGroup>
