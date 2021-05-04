@@ -3,11 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PelotonCloneApp.Views.FeaturedPage"
              BackgroundColor="{StaticResource Background}">
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowDefinitions="Auto, 240, *">
+            <Label 
+                Margin="16,10,0,0"
+                FontAttributes="Bold"
+                FontSize="Medium"
+                TextColor="{StaticResource TextPrimary}"
+                Text="Live and Upcoming" />
+            <CollectionView 
+            Grid.Row="1"
+            VerticalOptions="Start" 
+            ItemsLayout="HorizontalList">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Item One</x:String>
+                    <x:String>Item Two</x:String>
+                    <x:String>Item Three</x:String>
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="16, 0, 0, 0" >
+                    <Frame 
+                        CornerRadius="8" 
+                        WidthRequest="320"
+                        BackgroundColor="{StaticResource CardBackground}"
+                        HasShadow="True" 
+                        Padding="0,0,4,0">
+                        <Grid RowDefinitions="160,Auto,Auto">
+                            <BoxView BackgroundColor="Black" />
+                            <Label Grid.Row="1"
+                                   Margin="16,4, 0, 0" 
+                                   FontAttributes="Bold"
+                                   FontSize="Medium"
+                                   Text="PROGRAM - 4 WEEKS" 
+                                   TextColor="{StaticResource TextSecondary}"/>
+                            <Label Grid.Row="2"
+                                   Margin="16,0, 0, 6" 
+                                   FontSize="Medium"
+                                   Text="Strength"
+                                   TextColor="{StaticResource TextPrimary}"/>
+
+                        </Grid>
+                    </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </Grid>
     </ContentPage.Content>
+    
 </ContentPage>
