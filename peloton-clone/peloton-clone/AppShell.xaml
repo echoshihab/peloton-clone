@@ -47,10 +47,18 @@
              Route="ChallengesPage"
              Shell.NavBarIsVisible="False">
             <Tab.Icon >
+           
                 <FontImageSource FontFamily="FASolid"
                                              Glyph="{x:Static helpers:FAIcons.Trophy}"/>
             </Tab.Icon>
             <ShellContent 
+                          Title="Active"
+                          ContentTemplate="{DataTemplate local:ChallengesPage}"/>
+            <ShellContent 
+                          Title="Upcoming"
+                          ContentTemplate="{DataTemplate local:ChallengesPage}"/>
+            <ShellContent 
+                          Title="Completed"
                           ContentTemplate="{DataTemplate local:ChallengesPage}"/>
         </Tab>
         <Tab Title="Classes" 
