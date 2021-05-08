@@ -2,27 +2,144 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PelotonCloneApp.Views.ChallengesPage"
-             BackgroundColor="{StaticResource Background}">
-    <Grid RowDefinitions="*,Auto" Padding="6">
-        <CarouselView>
+             BackgroundColor="{StaticResource Background}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:helpers="clr-namespace:PelotonCloneApp.Helpers"
+             Shell.NavBarIsVisible="False"
+             ios:Page.UseSafeArea="True">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CategoryIcon" TargetType="Label">
+                <Setter Property="FontFamily" Value="FASolid"/>
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+            </Style>
+            <Style x:Key="CategoryLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid 
+          RowDefinitions="Auto,.9*,Auto"
+          Padding="0,8,0,8">
+        <Grid
+              
+                Padding="16"
+              BackgroundColor="{StaticResource CardBackground}"
+              ColumnDefinitions="*,*,*"
+              RowDefinitions="Auto,Auto">
+            <Label  
+                    Style="{StaticResource CategoryIcon}"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Text="{x:Static helpers:FAIcons.Trophy}"/>
+            <Label Text="Active"
+               Grid.Row="1"
+               Style="{StaticResource CategoryLabel}"
+               />
+
+            <Label 
+            Style="{StaticResource CategoryIcon}"
+            Grid.Row="0"
+            Grid.Column="1"
+            Text="{x:Static helpers:FAIcons.AngleDoubleUp}" />
+
+            <Label Text="Upcoming"
+                 Grid.Row="1"
+                  Style="{StaticResource CategoryLabel}"
+                 Grid.Column="1"
+              />
+            
+            <Label 
+            Grid.Row="0"
+            Grid.Column="2"
+            Style="{StaticResource CategoryIcon}"
+            Text="{x:Static helpers:FAIcons.Award}" />
+            
+            <Label Text="Completed"
+                 Grid.Row="1"
+                  Style="{StaticResource CategoryLabel}"
+                Grid.Column="2"
+               />
+        </Grid>
+        <CarouselView 
+            
+                      Grid.Row="1" 
+                      Loop="False" 
+                      PeekAreaInsets="20" 
+                      IndicatorView="indicatorView">
+            <CarouselView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="20" />
+            </CarouselView.ItemsLayout>
             <CarouselView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Item One</x:String>
                     <x:String>Item Two</x:String>
                     <x:String>Item Three</x:String>
+                    <x:String>Item Three</x:String>
+                    <x:String>Item Three</x:String>
                 </x:Array>
             </CarouselView.ItemsSource>
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Padding="16, 0, 0, 0" >
+                    <Grid Padding="0, 8, 0, 8" >
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="CurrentItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                        Value="1.0" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="PreviousItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                        Value=".95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="NextItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                        Value=".95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="DefaultItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                        Value=".95" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <Frame 
                         CornerRadius="8" 
                         WidthRequest="320"
                         BackgroundColor="{StaticResource CardBackground}"
                         HasShadow="True" 
                         Padding="0,0,4,0">
-                            <Grid RowDefinitions="160,Auto,Auto">
-                                <BoxView BackgroundColor="Black" />
+                            <Frame.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#8A2387"
+                                                  Offset="0.1"/>
+                                    <GradientStop Color="#E94057"
+                                                  Offset="0.6" />
+                                    <GradientStop Color="#F27121"
+                                                  Offset="1.0" />
+
+                                </LinearGradientBrush>
+                            </Frame.Background>  <!--1.27.24-->
+                            <Grid RowDefinitions="Auto,Auto,*,*,Auto"
+                                  Padding="0,44,0,0">
+                                <Label Text="{x:Static helpers:FAIcons.Award}"
+                                       FontSize="45"
+                                       TextColor="White"
+                                       FontFamily="FASolid"
+                                       HorizontalOptions="Center"/>
                                 <Label Grid.Row="1"
                                    Margin="16,4, 0, 0" 
                                    FontAttributes="Bold"
@@ -41,5 +158,13 @@
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
+        <IndicatorView x:Name="indicatorView"
+                       Grid.Row="2"
+                       HorizontalOptions="Center"
+                       IndicatorSize="10"
+                       IndicatorColor="#ADB4BD"
+                       SelectedIndicatorColor="#5D6578"
+                       />
+
     </Grid>
 </ContentPage>

@@ -52,14 +52,13 @@
                                              Glyph="{x:Static helpers:FAIcons.Trophy}"/>
             </Tab.Icon>
             <ShellContent 
-                          Title="Active"
                           ContentTemplate="{DataTemplate local:ChallengesPage}"/>
-            <ShellContent 
+            <!--<ShellContent 
                           Title="Upcoming"
                           ContentTemplate="{DataTemplate local:ChallengesPage}"/>
             <ShellContent 
                           Title="Completed"
-                          ContentTemplate="{DataTemplate local:ChallengesPage}"/>
+                          ContentTemplate="{DataTemplate local:ChallengesPage}"/>-->
         </Tab>
         <Tab Title="Classes" 
              Route="ClassesPage"
