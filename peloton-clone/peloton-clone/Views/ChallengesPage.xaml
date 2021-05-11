@@ -4,23 +4,27 @@
              x:Class="PelotonCloneApp.Views.ChallengesPage"
              BackgroundColor="{StaticResource Background}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:helpers="clr-namespace:PelotonCloneApp.Helpers"
+             xmlns:helpers="clr-namespace:PelotonCloneApp.Helpers" xmlns:viewmodels="clr-namespace:PelotonCloneApp.ViewModels" xmlns:converters="clr-namespace:PelotonCloneApp.Converters"
              Shell.NavBarIsVisible="False"
-             ios:Page.UseSafeArea="True">
+             ios:Page.UseSafeArea="True"
+             x:DataType="viewmodels:ChallengesViewModel">
+    <ContentPage.BindingContext>
+        <viewmodels:ChallengesViewModel />
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="CategoryIcon" TargetType="Label">
                 <Setter Property="FontFamily" Value="FASolid"/>
                 <Setter Property="FontSize" Value="28"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
+
             </Style>
             <Style x:Key="CategoryLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="TextColor" Value="{StaticResource TextSecondary}"/>
-            </Style>
 
+            </Style>
+            <converters:SelectedIndexColorConverter x:Key="SelectedIndexColorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid 
@@ -31,40 +35,64 @@
                 Padding="16"
               BackgroundColor="{StaticResource CardBackground}"
               ColumnDefinitions="*,*,*"
-              RowDefinitions="Auto,Auto">
-            <Label  
+              >
+            <StackLayout Padding="16,16,16,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectedcategoryCommand}"
+                                          CommandParameter="0"/>
+                </StackLayout.GestureRecognizers>
+                <Label  
                     Style="{StaticResource CategoryIcon}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Text="{x:Static helpers:FAIcons.Trophy}"/>
-            <Label Text="Active"
-               Grid.Row="1"
-               Style="{StaticResource CategoryLabel}"
+                    Text="{x:Static helpers:FAIcons.Trophy}"
+                    TextColor= "{Binding SelectedCategoryIndex, 
+                    Converter={StaticResource SelectedIndexColorConverter}, 
+                    ConverterParameter='0'}" />
+                <Label Text="Active"
+                   Style="{StaticResource CategoryLabel}"
+                   TextColor= "{Binding SelectedCategoryIndex, 
+                        Converter={StaticResource SelectedIndexColorConverter}, 
+                        ConverterParameter='0'}"    
                />
+            </StackLayout>
 
-            <Label 
+            <StackLayout Grid.Column="1" Padding="16,16,16,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectedcategoryCommand}"
+                                          CommandParameter="1"/>
+                </StackLayout.GestureRecognizers>
+                <Label 
             Style="{StaticResource CategoryIcon}"
-            Grid.Row="0"
-            Grid.Column="1"
-            Text="{x:Static helpers:FAIcons.AngleDoubleUp}" />
+            Text="{x:Static helpers:FAIcons.AngleDoubleUp}" 
+            TextColor= "{Binding SelectedCategoryIndex, 
+                    Converter={StaticResource SelectedIndexColorConverter}, 
+                    ConverterParameter='1'}"/>
 
             <Label Text="Upcoming"
-                 Grid.Row="1"
-                  Style="{StaticResource CategoryLabel}"
-                 Grid.Column="1"
+                 Style="{StaticResource CategoryLabel}"
+                   TextColor= "{Binding SelectedCategoryIndex, 
+                    Converter={StaticResource SelectedIndexColorConverter}, 
+                    ConverterParameter='1'}"
               />
-            
+            </StackLayout>
+            <StackLayout Grid.Column="2" Padding="16,16,16,0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SelectedcategoryCommand}"
+                                          CommandParameter="2"/>
+                </StackLayout.GestureRecognizers>
             <Label 
-            Grid.Row="0"
-            Grid.Column="2"
             Style="{StaticResource CategoryIcon}"
-            Text="{x:Static helpers:FAIcons.Award}" />
-            
+            Text="{x:Static helpers:FAIcons.Award}" 
+            TextColor= "{Binding SelectedCategoryIndex, 
+                    Converter={StaticResource SelectedIndexColorConverter}, 
+                    ConverterParameter='2'}" />
+
             <Label Text="Completed"
-                 Grid.Row="1"
                   Style="{StaticResource CategoryLabel}"
-                Grid.Column="2"
+                   TextColor= "{Binding SelectedCategoryIndex, 
+                    Converter={StaticResource SelectedIndexColorConverter}, 
+                    ConverterParameter='2'}"
                />
+           </StackLayout>
         </Grid>
         <CarouselView 
             
@@ -132,9 +160,9 @@
                                                   Offset="1.0" />
 
                                 </LinearGradientBrush>
-                            </Frame.Background>  
+                            </Frame.Background>
                             <Grid RowDefinitions="Auto,Auto,*,*,Auto"
-                                  Padding="0,24,0,0"
+                                Padding="0,24,0,0"
                                   RowSpacing="16">
                                 <Frame HeightRequest="100"
                                        WidthRequest="100"
@@ -161,12 +189,12 @@
                                     </StackLayout>
                                 </Frame>
                                 <StackLayout Grid.Row="2" VerticalOptions="Center">
-                                <Label Grid.Row="2" 
+                                    <Label Grid.Row="2" 
                                        HorizontalOptions="Center"
                                        FontSize="24"
                                        TextColor = "White"
                                        Text="The Annual" />
-                                <Label Grid.Row="2" 
+                                    <Label Grid.Row="2" 
                                        HorizontalOptions="Center"
                                        FontSize="18"
                                        Text="Build habits for success"
@@ -194,11 +222,11 @@
                                     <Label Text="joined" FontSize="Micro" TextColor="White"/>
                                     <Label Margin="12,0,0,0" Text="1,124,492 participants" FontSize="Micro" TextColor="White"/>
                                 </StackLayout>
-                            <Frame Grid.Row="4"
+                                <Frame Grid.Row="4"
                                        Padding="12" Margin="12,0,12,12"
                                        HasShadow="False">
-                                <Grid ColumnSpacing="10" ColumnDefinitions="Auto, *, Auto">
-                                    <Frame 
+                                    <Grid ColumnSpacing="10" ColumnDefinitions="Auto, *, Auto">
+                                        <Frame 
                                         HeightRequest="50"
                                         CornerRadius="25"
                                         Padding="0"
@@ -206,13 +234,13 @@
                                         HasShadow="False"
                                         WidthRequest="50"
                                         HorizontalOptions="Center">
-                                        <Label Text="{x:Static helpers:FAIcons.ThumbsUp}"
+                                            <Label Text="{x:Static helpers:FAIcons.ThumbsUp}"
                                             FontSize="24"
                                             TextColor="{StaticResource TextSecondary}"
                                             FontFamily="FASolid"
                                             VerticalOptions="Center"
                                             HorizontalOptions="Center"/>
-                                    </Frame>
+                                        </Frame>
                                         <StackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
                                             <Label Text="Unearned" FontSize="Small" TextColor="{StaticResource TextPrimary}"/>
                                             <Label Text="616 min to 1k" FontSize="Micro" TextColor="{StaticResource TextSecondary}"/>
@@ -221,7 +249,7 @@
                                                          HeightRequest="4"
                                                          Margin="0,4,0,0"/>
                                         </StackLayout>
-                                    <Frame 
+                                        <Frame 
                                         HeightRequest="30"
                                         Grid.Column="2"
                                         VerticalOptions="End"
@@ -237,11 +265,11 @@
                                                 FontFamily="FASolid"
                                                 VerticalOptions="Center"
                                                 HorizontalOptions="Center"/>
-                                    </Frame>
+                                        </Frame>
                                     </Grid>
-                            </Frame>
+                                </Frame>
 
-                        </Grid>
+                            </Grid>
                         </Frame>
                     </Grid>
                 </DataTemplate>
