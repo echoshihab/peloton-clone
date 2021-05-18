@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PelotonCloneApp.Controls.CompletedChallengesControl">
+  <ContentView.Content>
+      <StackLayout>
+            <CollectionView 
+            Grid.Row="1"
+            VerticalOptions="Start" 
+            ItemsLayout="VerticalList">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Item One</x:String>
+                        <x:String>Item Two</x:String>
+                        <x:String>Item Three</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="16, 8" >
+                            <Frame 
+                        CornerRadius="8" 
+                        WidthRequest="320"
+                        BackgroundColor="{StaticResource CardBackground}"
+                        HasShadow="True" 
+                        Padding="0,0,4,0">
+                                <Grid RowDefinitions="160,Auto">
+                                    <StackLayout>
+                                        <StackLayout.Background>
+                                            <LinearGradientBrush>
+                                                <GradientStop Color="#8A2387"
+                                                  Offset="0.1"/>
+                                                <GradientStop Color="#E94057"
+                                                  Offset="0.6" />
+                                                <GradientStop Color="#F27121"
+                                                  Offset="1.0" />
+
+                                            </LinearGradientBrush>
+                                        </StackLayout.Background>
+                                        
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1"
+                                                 Orientation="Horizontal"
+                                                 Padding="16, 8, 16, 12">
+                                        <Label Grid.Row="2"
+                                               FontSize="Medium"
+                                               VerticalTextAlignment="Center"
+                                               Text="Earned Gold"
+                                               TextColor="{StaticResource TextPrimary}"
+                                               />
+                                        <Label FontSize="Micro" 
+                                               TextColor="{StaticResource TextSecondary}"
+                                               VerticalTextAlignment="Center"
+                                               Text="-" 
+                                               />
+                                        <Label Grid.Row="1"
+                                        
+                                               VerticalTextAlignment="Center"
+                                               FontAttributes="Bold"
+                                               FontSize="Small"
+                                               Text="29 days" 
+                                               TextColor="{StaticResource TextSecondary}"
+                                               />
+                                       
+
+                                    </StackLayout>
+                                    
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

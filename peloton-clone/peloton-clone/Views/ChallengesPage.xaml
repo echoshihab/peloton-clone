@@ -26,6 +26,7 @@
 
             </Style>
             <converters:SelectedIndexColorConverter x:Key="SelectedIndexColorConverter" />
+            <converters:SelectedIndexVisibleConverter x:Key="SelectedIndexVisibleConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid 
@@ -95,7 +96,8 @@
                />
            </StackLayout>
         </Grid>
-        <controls:ActiveChallengesView Grid.Row="1" />
-
+        <controls:ActiveChallengesView Grid.Row="1" IsVisible="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexVisibleConverter}, ConverterParameter='0'}" />
+        <controls:ActiveChallengesView Grid.Row="1" IsVisible="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexVisibleConverter}, ConverterParameter='1'}" />
+        <controls:CompletedChallengesControl Grid.Row="1" IsVisible="{Binding SelectedCategoryIndex, Converter={StaticResource SelectedIndexVisibleConverter}, ConverterParameter='2'}" />
     </Grid>
 </ContentPage>
