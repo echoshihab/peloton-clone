@@ -1,13 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PelotonCloneApp.Controls.CompletedChallengesControl">
-  <ContentView.Content>
-      <StackLayout>
-            <CollectionView 
-            Grid.Row="1"
-            VerticalOptions="Start" 
-            ItemsLayout="VerticalList">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="PelotonCloneApp.Controls.CompletedChallengesControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:helpers="clr-namespace:PelotonCloneApp.Helpers">
+
+    <ContentView.Content>
+        <StackLayout>
+            <CollectionView
+                Grid.Row="1"
+                ItemsLayout="VerticalList"
+                VerticalOptions="Start">
                 <CollectionView.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Item One</x:String>
@@ -17,60 +20,86 @@
                 </CollectionView.ItemsSource>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="16, 8" >
-                            <Frame 
-                        CornerRadius="8" 
-                        WidthRequest="320"
-                        BackgroundColor="{StaticResource CardBackground}"
-                        HasShadow="True" 
-                        Padding="0,0,4,0">
-                                <Grid RowDefinitions="160,Auto">
-                                    <StackLayout>
+                        <Grid Padding="16,8">
+                            <Frame
+                                Padding="0,0,4,0"
+                                BackgroundColor="{StaticResource CardBackground}"
+                                CornerRadius="8"
+                                HasShadow="True"
+                                WidthRequest="320">
+                                <Grid RowDefinitions="100,Auto">
+                                    <StackLayout Padding="16" Spacing="0">
                                         <StackLayout.Background>
                                             <LinearGradientBrush>
-                                                <GradientStop Color="#8A2387"
-                                                  Offset="0.1"/>
-                                                <GradientStop Color="#E94057"
-                                                  Offset="0.6" />
-                                                <GradientStop Color="#F27121"
-                                                  Offset="1.0" />
+                                                <GradientStop Offset="0.1" Color="#8A2387" />
+                                                <GradientStop Offset="0.6" Color="#E94057" />
+                                                <GradientStop Offset="1.0" Color="#F27121" />
 
                                             </LinearGradientBrush>
                                         </StackLayout.Background>
-                                        
-                                    </StackLayout>
-                                    <StackLayout Grid.Row="1"
-                                                 Orientation="Horizontal"
-                                                 Padding="16, 8, 16, 12">
-                                        <Label Grid.Row="2"
-                                               FontSize="Medium"
-                                               VerticalTextAlignment="Center"
-                                               Text="Earned Gold"
-                                               TextColor="{StaticResource TextPrimary}"
-                                               />
-                                        <Label FontSize="Micro" 
-                                               TextColor="{StaticResource TextSecondary}"
-                                               VerticalTextAlignment="Center"
-                                               Text="-" 
-                                               />
-                                        <Label Grid.Row="1"
-                                        
-                                               VerticalTextAlignment="Center"
-                                               FontAttributes="Bold"
-                                               FontSize="Small"
-                                               Text="29 days" 
-                                               TextColor="{StaticResource TextSecondary}"
-                                               />
-                                       
+                                        <Label
+                                            FontSize="Small"
+                                            Text="ENDED 12/31/2020"
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="Holiday Activity Challenge"
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center" />
 
                                     </StackLayout>
-                                    
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Padding="16,8,16,12"
+                                        Orientation="Horizontal">
+                                        <Label
+                                            Grid.Row="2"
+                                            FontSize="Medium"
+                                            Text="Earned Gold"
+                                            TextColor="{StaticResource TextPrimary}"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            FontSize="Micro"
+                                            Text="-"
+                                            TextColor="{StaticResource TextSecondary}"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            Grid.Row="1"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            Text="29 days"
+                                            TextColor="{StaticResource TextSecondary}"
+                                            VerticalTextAlignment="Center" />
+
+
+                                    </StackLayout>
+
                                 </Grid>
+                            </Frame>
+                            <Frame
+                                Margin="0,60,16,16"
+                                Padding="0"
+                                BackgroundColor="{StaticResource Accent}"
+                                BorderColor="White"
+                                CornerRadius="40"
+                                HasShadow="False"
+                                HeightRequest="80"
+                                HorizontalOptions="End"
+                                VerticalOptions="Start"
+                                WidthRequest="80">
+                                <Label
+                                    FontFamily="FASolid"
+                                    FontSize="28"
+                                    HorizontalOptions="Center"
+                                    Text="{x:Static helpers:FAIcons.Gifts}"
+                                    TextColor="White"
+                                    VerticalOptions="Center" />
                             </Frame>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-  </ContentView.Content>
+    </ContentView.Content>
 </ContentView>

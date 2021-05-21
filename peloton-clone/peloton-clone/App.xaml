@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="peloton_clone.App">
+<Application
+    x:Class="peloton_clone.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -18,6 +19,6 @@
             <Color x:Key="TabIconUnselected">#2C2D31</Color>
             <Color x:Key="TextPrimary">#25272C</Color>
             <Color x:Key="TextSecondary">#606572</Color>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
